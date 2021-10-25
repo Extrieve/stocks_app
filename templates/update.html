@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Update Page
+{% endblock %}
+
+{% block content %}
+
+<body class="text-center">
+  <br>
+  <div class="container">
+    <form class="form-register" style="color:white" method="post">
+      <img class="rounded-circle" src="https://i.pinimg.com/originals/2f/f7/c8/2ff7c8247dba811ba161c643b89d20e1.gif" alt="">
+      <h1 class="h1 mb-3 font-weight-normal">
+        Update Your Account
+      </h1>
+      <br>
+      <form class="form-register" style="color:white" action="/update/{{user_to_update.id}}" method="POST">
+        <input class="form-control" placeholder="Name" name='name' type="text" value="{{user_to_update.name}}">
+        <br>
+        <input class="form-control" placeholder="Last" name='last' type="text" value="{{user_to_update.last}}">
+        <br>
+        <input class="form-control" placeholder="Email" name='email' type="text" value="{{user_to_update.email}}">
+        <br>
+        <input type="submit" name="submit" value="Update" class="btn btn-success btn-lg btn-block">
+      </form>
+    </form>
+  </div>
+</body>
+
+
+{% endblock %}

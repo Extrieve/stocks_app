@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Stock Information
+{% endblock %}
+
+{% block content %}
+<table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <!-- Your Columns HERE -->
+      <th scope="col">Symbol</th>
+      <th scope="col">Latest Price</th>
+      <th scope="col">Average Total Volume</th>
+      <th scope="col">52 Week High</th>
+      <th scope="col">52 Week Low</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Your rows inside the table HERE: -->
+    {%for data in stock_data%}
+    <tr>
+      <td>{{data['symbol']}}</td>
+      <td>{{data['latestPrice']}}</td>
+      <td>{{data['avgTotalVolume']}}</td>
+      <td>{{data['week52High']}}</td>
+      <td>{{data['week52Low']}}</td>
+      <td>
+        <a href="{{ url_for('coming_soon') }}">
+          <button class='btn btn-outline btn-info'>More Info</button>
+          <button class='btn btn-outline btn-success'>Purchase</button>
+        </a>
+      </td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+{% endblock %}
