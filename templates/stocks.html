@@ -14,17 +14,19 @@ Stock Information
       <th scope="col">Average Total Volume</th>
       <th scope="col">52 Week High</th>
       <th scope="col">52 Week Low</th>
+      <th scope="col">IEX Volume</th>
     </tr>
   </thead>
   <tbody>
     <!-- Your rows inside the table HERE: -->
     {%for data in stock_data%}
     <tr>
-      <td>{{data['symbol']}}</td>
-      <td>{{data['latestPrice']}}</td>
-      <td>{{data['avgTotalVolume']}}</td>
-      <td>{{data['week52High']}}</td>
-      <td>{{data['week52Low']}}</td>
+      <td>{{data.symbol}}</td>
+      <td>{{data.latest_price}}</td>
+      <td>{{data.average_volume}}</td>
+      <td>{{data.fifty_high}}</td>
+      <td>{{data.fifty_low}}</td>
+      <td>{{data.iex_volume}}</td>
       <td>
         <a href="{{ url_for('coming_soon') }}">
           <button class='btn btn-outline btn-info'>More Info</button>

@@ -1,22 +1,9 @@
-import requests
-from flask import Flask, render_template, request, redirect, url_for
+from models import app, db, User, Stocks
+from flask import render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from stocks import data
+import requests
 import random
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///users.db"
-db = SQLAlchemy(app)
-
-
-# Create DB model
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(30), nullable=False)
-    last = db.Column(db.String(30), nullable=False)
-    email = db.Column(db.String(60), nullable=False)
-
-    def __repr__(self):
-        return 'Name %r' % self.id
 
 
 @app.route('/')
@@ -32,14 +19,16 @@ def users():
 
 @app.route('/stocks', methods=['GET', 'POST'])
 def stocks():
-    r1 = random.randint(0, 495)
-    token = 'Tsk_1c42cee11b834d83b84aec96ae542f1a'
-    stock_data = []
-    for ticker in data[r1: r1+10]:
-        api_url = f'https://sandbox.iexapis.com/stable/stock/{ticker}/quote/?token={token}'
-        ## Transform the data as a json object
-        stock = requests.get(api_url).json()
-        stock_data.append(stock)
+    # r1 = random.randint(0, 495)
+    # token = 'Tsk_1c42cee11b834d83b84aec96ae542f1a'
+    # stock_data = []
+    # for ticker in data[r1: r1+10]:
+    #     api_url = f'https://sandbox.iexapis.com/stable/stock/{ticker}/quote/?token={token}'
+    #     ## Transform the data as a json object
+    #     stock = requests.get(api_url).json()
+    #     stock_data.append(stock)
+
+    stock_data = Stocks.query.all()
 
     return render_template('stocks.html', stock_data=stock_data)
 
@@ -55,7 +44,9 @@ def register():
         user_name = request.form['name']
         user_last = request.form['last']
         user_email = request.form['email']
-        new_user = User(name=user_name, last=user_last, email=user_email)
+        budget = request.form['budget']
+        new_user = User(name=user_name, last=user_last,
+                        email=user_email, budget=budget)
         try:
             db.session.add(new_user)
             db.session.commit()
@@ -101,4 +92,5 @@ def coming_soon():
 
 
 if __name__ == '__main__':
+    app.run(debug=True)
     app.run(debug=True)
