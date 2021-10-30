@@ -27,8 +27,12 @@ def stocks():
     #     ## Transform the data as a json object
     #     stock = requests.get(api_url).json()
     #     stock_data.append(stock)
+    q = request.args.get('q')
 
-    stock_data = Stocks.query.all()
+    if q:
+        stock_data = Stocks.query.filter(Stocks.symbol.contains(q))
+    else:
+        stock_data = Stocks.query.all()
 
     return render_template('stocks.html', stock_data=stock_data)
 
