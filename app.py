@@ -64,12 +64,11 @@ def register():
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
 def update(id):
     user_to_update = User.query.get_or_404(id)
-    print(user_to_update.name, user_to_update.last)
     if request.method == 'POST':
-        print('POST IS WORKING')
         user_to_update.name = request.form['name']
         user_to_update.last = request.form['last']
         user_to_update.email = request.form['email']
+        user_to_update.budget = request.form['budget']
         try:
             db.session.commit()
             return redirect(url_for('users'))
