@@ -10,21 +10,26 @@ Register Page
   <br>
   <div class="container">
     <form class="form-register" style="color:white" method="post">
+      {{ form.hidden_tag() }}
       <img class="rounded-circle" src="https://media1.giphy.com/media/sQBkCTTrJRLSE/giphy.gif" alt="">
       <h1 class="h1 mb-3 font-weight-normal">
         Register Account
       </h1>
       <br>
       <form class="form-register" style="color:white" action="register.html" method="POST">
-        <input class="form-control" placeholder="Name" name='name' type="text">
+        {{form.name.label()}}
+        {{form.name(class="form-control", placeholder="Name")}}
+
+        {{form.last.label()}}
+        {{form.last(class="form-control", placeholder="Last Name")}}
+
+        {{form.email.label()}}
+        {{form.email(class="form-control", placeholder="email")}}
+
+        {{form.budget.label()}}
+        {{form.budget(class="form-control", placeholder="Budget")}}
         <br>
-        <input class="form-control" placeholder="Last" name='last' type="text">
-        <br>
-        <input class="form-control" placeholder="Email" name='email' type="text">
-        <br>
-        <input class="form-control" placeholder="Budget" name='budget' type="text">
-        <br>
-        <input type="submit" name="submit" value="Submit" class="btn btn-success btn-lg btn-block">
+        {{form.submit(class="btn btn-lg btn-block btn-primary")}}
       </form>
     </form>
   </div>

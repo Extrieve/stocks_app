@@ -1,6 +1,7 @@
 from models import app, db, User, Stocks
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
+from forms import RegisterForm, StocksForm
 from stocks import data
 import requests
 import random
@@ -44,21 +45,32 @@ def about_me():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    if request.method == 'POST':
-        user_name = request.form['name']
-        user_last = request.form['last']
-        user_email = request.form['email']
-        budget = request.form['budget']
-        new_user = User(name=user_name, last=user_last,
-                        email=user_email, budget=budget)
-        try:
-            db.session.add(new_user)
-            db.session.commit()
-            return redirect(url_for('users'))
-        except:
-            return 'There was an error adding your friend.'
-    else:
-        return render_template('register.html')
+    form = RegisterForm()
+    if form.validate_on_submit():
+        new_user = User(name=form.name.data, last=form.last.data,
+                        email=form.email.datam, budget=form.budget.data)
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect(url_for('users'))
+
+    if form.errors != {}:  # if no errors found
+        for err_msg in form.errors.values():
+            flash(f'There was an error: {err_msg}', category='danger')
+    # if request.method == 'POST':
+    #     user_name = request.form['name']
+    #     user_last = request.form['last']
+    #     user_email = request.form['email']
+    #     budget = request.form['budget']
+    #     new_user = User(name=user_name, last=user_last,
+    #                     email=user_email, budget=budget)
+    #     try:
+    #         db.session.add(new_user)
+    #         db.session.commit()
+    #         return redirect(url_for('users'))
+    #     except:
+    #         return 'There was an error adding your friend.'
+
+    return render_template('register.html', form=form)
 
 
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
