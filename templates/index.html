@@ -5,39 +5,29 @@ HomePage
 {% endblock %}
 
 {% block content %}
-<section class="py-5" id="features">
-  <!-- Bootstrap icons-->
-  <!-- Core theme CSS (includes Bootstrap)-->
-  <link href="../static/css/styles.css" rel="stylesheet" />
-  <header class="bg-dark py-5">
-    <div class="container px-5">
-      <div class="row gx-5 justify-content-center">
-        <div class="col-lg-6">
-          <div class="text-center my-5">
-            <h1 class="display-5 fw-bolder text-white mb-2">Welcome to Extrieve Stocks</h1>
-            <p class="lead text-white-50 mb-4">Register an Account and Start your Trading Journet!</p>
-            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-              <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{{url_for('register')}}">Get Started</a>
-              <a class="btn btn-outline-light btn-lg px-4" href="{{url_for('about_me')}}">Learn More</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-</section>
 
+<body class="text-center">
+  <h1>Welcome to Nick's Stock Market!</h1>
+  <h3>
+    <br>
+    <ul>
+      <li class=text-left>This site is under construction. It currently pulls stock information from IEX cloud API.</li>
+      <li class=text-left>The stock information is only reflecting S&P 500 stock information.</li>
+      <li class=text-left>The site will allow users to 'buy' stocks and display them through their own personalized portfolio..</li>
+      <li class=text-left>The stocks site is currently pulling 10 randoms stocks from the S&P500, will add functionality later...</li>
+      <li class=text-left>Ultimately I would like to implement some stock analysis tools and graph display per user basis.</li>
+      <li class=text-left>The site support full CRUD functionality, create a User under register, update under Users, Delete under users, read via Users</li>
+      <li class=text-left>I am working on this site by myself, some features are bound to be missing, it will be fixed by later submissions</li>
+    </ul>
+
+
+  </h3>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <img src="https://wompampsupport.azureedge.net/fetchimage?siteId=7575&v=2&jpgQuality=100&width=700&url=https%3A%2F%2Fi.kym-cdn.com%2Fentries%2Ficons%2Foriginal%2F000%2F029%2F959%2FScreen_Shot_2019-06-05_at_1.26.32_PM.jpg" alt="">
+</body>
 {% endblock %}
