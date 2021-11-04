@@ -1,33 +1,15 @@
 {% extends 'base.html' %}
-
 {% block title %}
-HomePage
+Extrieve Stocks
 {% endblock %}
-
 {% block content %}
-
-<body class="text-center">
-  <h1>Welcome to Nick's Stock Market!</h1>
-  <h3>
-    <br>
-    <ul>
-      <li class=text-left>This site is under construction. It currently pulls stock information from IEX cloud API.</li>
-      <li class=text-left>The stock information is only reflecting S&P 500 stock information.</li>
-      <li class=text-left>The site will allow users to 'buy' stocks and display them through their own personalized portfolio..</li>
-      <li class=text-left>The stocks site is currently pulling 10 randoms stocks from the S&P500, will add functionality later...</li>
-      <li class=text-left>Ultimately I would like to implement some stock analysis tools and graph display per user basis.</li>
-      <li class=text-left>The site support full CRUD functionality, create a User under register, update under Users, Delete under users, read via Users</li>
-      <li class=text-left>I am working on this site by myself, some features are bound to be missing, it will be fixed by later submissions</li>
-    </ul>
-
-
-  </h3>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <img src="https://wompampsupport.azureedge.net/fetchimage?siteId=7575&v=2&jpgQuality=100&width=700&url=https%3A%2F%2Fi.kym-cdn.com%2Fentries%2Ficons%2Foriginal%2F000%2F029%2F959%2FScreen_Shot_2019-06-05_at_1.26.32_PM.jpg" alt="">
-</body>
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-dark" style="color:white">
+  <div class="col-md-5 p-lg-5 mx-auto my-5">
+    <h1 class="display-4 font-weight-normal">Extrieve Stocks</h1>
+    <p class="lead font-weight-normal">Start Your Trading Journey</p>
+    <a class="btn btn-primary" href="{{ url_for('register') }}">Get Started</a>
+  </div>
+  <div class="product-device box-shadow d-none d-md-block"></div>
+  <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+</div>
 {% endblock %}
