@@ -2,12 +2,14 @@ certifi==2021.10.8
 charset-normalizer==2.0.7
 click==8.0.3
 colorama==0.4.4
+dnspython==2.1.0
 Flask==2.0.2
 Flask-SQLAlchemy==2.5.1
 Flask-WTF==0.15.1
 greenlet==1.1.2
 gunicorn==20.1.0
 idna==3.3
+is-disposable-email==1.0.0
 itsdangerous==2.0.1
 Jinja2==3.0.2
 MarkupSafe==2.0.1
@@ -16,3 +18,4 @@ SQLAlchemy==1.4.26
 urllib3==1.26.7
 Werkzeug==2.0.2
 WTForms==2.3.3
+wtforms-validators==1.0.0
