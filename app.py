@@ -14,8 +14,15 @@ def index():
 
 @app.route('/users', methods=['GET', 'POST'])
 def users():
-    mydata = User.query.all()
-    return render_template('users.html', mydata=mydata)
+    q = request.args.get('q')
+
+    if q:
+        user_data = User.query.filter(
+            User.name.contains(q) | User.last.contains(q) | User.email.contains(q) | User.id.contains(q))
+    else:
+        user_data = User.query.all()
+
+    return render_template('users.html', mydata=user_data)
 
 
 @app.route('/stocks', methods=['GET', 'POST'])
@@ -31,7 +38,8 @@ def stocks():
     q = request.args.get('q')
 
     if q:
-        stock_data = Stocks.query.filter(Stocks.symbol.contains(q))
+        stock_data = Stocks.query.filter(
+            Stocks.name.contains(q) | Stocks.symbol.contains(q))
     else:
         stock_data = Stocks.query.all()
 
@@ -48,7 +56,7 @@ def register():
     form = RegisterForm()
     if form.validate_on_submit():
         new_user = User(name=form.name.data, last=form.last.data,
-                        email=form.email.datam, budget=form.budget.data)
+                        email=form.email.data, budget=form.budget.data)
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('users'))

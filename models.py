@@ -20,8 +20,9 @@ class User(db.Model):
 
 
 class Stocks(db.Model):
+    name = db.Column(db.String)
     symbol = db.Column(db.String(5), primary_key=True)
-    latest_price = db.Column(db.Float, primary_key=True)
+    latest_price = db.Column(db.Float)
     average_volume = db.Column(db.Integer)
     fifty_high = db.Column(db.Float)
     fifty_low = db.Column(db.Float)

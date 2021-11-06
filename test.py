@@ -26,6 +26,7 @@ for symbol_string in symbol_strings:
     data = requests.get(batch_api_url).json()
     for symbol in symbol_string.split(','):
         ticker = symbol
+        name = data[symbol]['quote']['companyName']
         latest_price = data[symbol]['quote']['latestPrice']
         average_volume = data[symbol]['quote']['avgTotalVolume']
         fifty_high = data[symbol]['quote']['week52High']
@@ -33,7 +34,7 @@ for symbol_string in symbol_strings:
         iex_volume = data[symbol]['quote']['iexVolume']
         exchange = data[symbol]['quote']['primaryExchange']
 
-        new_stock = Stocks(symbol=ticker, latest_price=latest_price, average_volume=average_volume,
+        new_stock = Stocks(symbol=ticker, name=name, latest_price=latest_price, average_volume=average_volume,
                            fifty_high=fifty_high, fifty_low=fifty_low, iex_volume=iex_volume, primary_exchange=exchange)
         add_db.append(new_stock)
 
