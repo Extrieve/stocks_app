@@ -84,6 +84,7 @@ def register():
 
 
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
+@login_required
 def update(id):
     user_to_update = User.query.get_or_404(id)
     if request.method == 'POST':
@@ -101,6 +102,7 @@ def update(id):
 
 
 @app.route('/delete/<int:id>', methods=['GET', 'POST'])
+@login_required
 def delete(id):
     user_delete = User.query.get_or_404(id)
     try:
@@ -112,6 +114,7 @@ def delete(id):
 
 
 @app.route('/coming-soon')
+@login_required
 def coming_soon():
 	return render_template('soon.html')
 
