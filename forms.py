@@ -1,10 +1,15 @@
 from flask_wtf import FlaskForm
 from models import User
-from wtforms import StringField, SubmitField, FloatField, IntegerField, ValidationError
-from wtforms.validators import DataRequired, Email, Length
+from wtforms import StringField, SubmitField, FloatField, IntegerField, ValidationError, PasswordField
+from wtforms.validators import DataRequired, Email, Length, EqualTo
 
 
 class RegisterForm(FlaskForm):
+
+    def validate_username(self, username_to_check):
+        user = User.query.filter_by(username=username_to_check.data).first()
+        if user:
+            raise ValidationError('Username already taken, try again!')
 
     def validate_email_address(self, email_address_to_check):
         email = User.query.filter_by(
@@ -12,11 +17,23 @@ class RegisterForm(FlaskForm):
         if email:
             raise ValidationError('Email already taken, try again!')
 
+    username = StringField(label='Username', validators=[
+                           Length(min=2, max=30), DataRequired()])
+    password1 = PasswordField(label='Password', validators=[
+                              Length(min=6), DataRequired()])
+    password2 = PasswordField(label='Confirm Password',
+                              validators=[EqualTo('password1'), DataRequired()])
     name = StringField(label='First Name', validators=[DataRequired()])
     last = StringField(label='Last Name', validators=[DataRequired()])
     email = StringField(label='Email', validators=[DataRequired(), Email()])
     budget = IntegerField(label='Budget', validators=[DataRequired()])
     submit = SubmitField(label='Register Account')
+
+
+class LoginForm(FlaskForm):
+    username = StringField(label='Username: ', validators=[DataRequired()])
+    password = StringField(label='Password: ', validators=[DataRequired()])
+    submit = SubmitField(label='Sign In')
 
 
 class StocksForm(FlaskForm):

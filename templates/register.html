@@ -17,6 +17,15 @@ Register Page
       </h1>
       <br>
       <form class="form-register" style="color:white" action="register.html" method="POST">
+        {{form.username.label()}}
+        {{form.username(class="form-control", placeholder="Username")}}
+
+        {{form.password1.label()}}
+        {{form.password1(class="form-control", placeholder="password")}}
+
+        {{form.password2.label()}}
+        {{form.password2(class="form-control", placeholder="confirm")}}
+
         {{form.name.label()}}
         {{form.name(class="form-control", placeholder="Name")}}
 
