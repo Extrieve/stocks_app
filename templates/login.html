@@ -10,9 +10,11 @@ Login Page
   <div class="container">
     <form class="form-signin" style="color:white" method="post">
       {{ form.hidden_tag() }}
-      <img class="mb-4" src="https://www.pngplay.com/wp-content/uploads/6/Welcome-Banner-Transparent-PNG.png" alt="">
+      <div class="container">
+        <img class="mb-4" src="https://www.pngplay.com/wp-content/uploads/6/Welcome-Banner-Transparent-PNG.png" width="800">
+      </div>
       <h1 class="h3 mb-3 font-weight-normal">
-        Please Create your Account
+        Log into your Account
       </h1>
       <br>
       {{form.username.label()}}
@@ -23,8 +25,8 @@ Login Page
 
       <br>
       <div class="checkbox mb-3">
-        <h6>Do not have an account?</h6>
-        <a href="{{ url_for('register') }}" class="btn btn-sm btn-secondary">Register</a>
+        <h5>Do not have an account?</h5>
+        <a href="{{ url_for('register') }}" class="btn btn-sm btn-primary">Register</a>
       </div>
 
       <br>

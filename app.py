@@ -139,7 +139,7 @@ def login_page():
 def logout_page():
     logout_user()
     flash('Successfully logged out!', category='info')
-    return redirect(url_for('home_page'))
+    return redirect(url_for('index'))
 
 
 if __name__ == '__main__':
