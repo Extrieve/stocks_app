@@ -61,6 +61,9 @@ def register():
                         email=form.email.data, budget=form.budget.data)
         db.session.add(new_user)
         db.session.commit()
+        login_user(new_user)
+        flash(
+            f'Account Created successfully! You are now logged in as: {new_user.username}', category='success')
         return redirect(url_for('users'))
 
     if form.errors != {}:  # if no errors found
