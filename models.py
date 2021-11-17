@@ -61,6 +61,16 @@ class Stocks(db.Model):
     @property
     def prettier_budget(self):
         if len(str(self)) > 3:
-            return f"{self.average_volume:,}$"
+            return f"{self.average_volume:,}"
         else:
-            return f"{self.average_volume}$"
+            return f"{self.average_volume}"
+
+    @property
+    def pretty_iex(self):
+        if self.iex_volume is not None:
+            if len(str(self)) > 3:
+                return f"{self.iex_volume:,}"
+            else:
+                return f"{self.iex_volume}"
+        else:
+            return f"None"
