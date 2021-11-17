@@ -5,17 +5,42 @@ About Me
 {% endblock %}
 
 {% block content %}
-<h1>Hello I am Nick the Author of this site</h1>
 
 <body class="text-center">
-  <img class="rounded-circle" src="https://i.kym-cdn.com/photos/images/original/001/980/634/8dd.png" alt="">
+  <style media="screen">
+    h1.test1 {
+      font-family: Georgia, sans-serif;
+      font-size: 5em;
+      letter-spacing: -2px;
+    }
+  </style>
+  <div class="container">
+    <br>
+    <h1 class="test1">About Me</h1>
+    <br>
+    <img class="img-fluid" src="../static/img/python.png" width="450px" alt="Responsive image">
+    <br>
+    <br>
+    <h2>
+      <p class="lead">
+        <strong>
+          Hello my name is <mark>Nicolas Cinera</mark> and I am the author of this site.<br>
+          My friends usually call me Nick, and I am in my first semester in the BAIS Masters program at USF.<br><br>
+          I am in my early 20's, so I don't have much professional experience <br> but I am eager to proof myself in Software Engineer / Data Science related roles.
+          <br>In my free time I like learning about new frameworks, in the last few years I have been very passionate about Python.
+          <br><br>Other of my non-code related hobbies include powerlifting, reading, anime, movies.
+          <br>I am trying to go for a 405lbs squat before the semester ends (370 current).
+        </strong>
+      </p>
+    </h2>
+    <br>
+    <br>
+    <h3>Git Log For this project</h3>
+    <img class="img-fluid" src="../static/img/git_log.png" alt="Responsive image">
+  </div>
 
-  <h2>Author: Nicolas Cinera</h2>
-  <h2>email: cineran.usf.edu</h2>
-  <h3>About Me: I am a student at USF!</h3>
-  <h4>I developed this site 100% on my own</h4>
-  <p>This is a test website built for ISM 6225</p>
 </body>
+
 
 
 {% endblock %}
