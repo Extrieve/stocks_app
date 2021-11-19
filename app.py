@@ -99,7 +99,7 @@ def more_info(symbol):
     historical_data = requests.get(api_url).json()
     labels = [item['date'] for item in historical_data]
     data = [item['close'] for item in historical_data]
-    return render_template('info.html', labels=labels, data=data)
+    return render_template('info.html', labels=labels, data=data, symbol=symbol)
 
 
 @app.route('/delete/<int:id>', methods=['GET', 'POST'])
