@@ -7,43 +7,32 @@ Register Page
 {% block content %}
 
 <style media="screen">
-  page-container {
-    position: relative;
-    min-height: 100vh;
-  }
-
-  content-wrap {
-    padding-bottom: 2.5rem;
-    /* Footer height */
-  }
-
-  footer {
-    position: fixed;
-    padding: 10px 10px 0px 10px;
-    bottom: 0;
-    width: 100%;
-    /* Height of the footer*/
-    height: 80px;
-    background: dark;
-  }
-
   /* body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
     background: linear-gradient(to right, #b92b27, #1565c0)
   } */
+  #footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 3.5rem;        /* Footer height */
+  }
 
   .card {
     margin-bottom: 20px;
     border: none
+    top: 50%;
+    left: 50%;
+    position: fluid
   }
 
   .box {
     width: 600px;
     max-width: 100%;
     padding: 40px;
-    position: absolute;
+    position: fluid;
     top: 50%;
     left: 50%;
     background: #191919;
@@ -170,7 +159,7 @@ Register Page
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <div class="card">
+      <div class="card" style="background-color: rgb(33,33,33);">
         <form onsubmit="" class="box" method="post">
           {{ form.hidden_tag() }}
           <h1>Register</h1>
