@@ -69,19 +69,6 @@ def register():
     if form.errors != {}:  # if no errors found
         for err_msg in form.errors.values():
             flash(f'There was an error: {err_msg}', category='danger')
-    # if request.method == 'POST':
-    #     user_name = request.form['name']
-    #     user_last = request.form['last']
-    #     user_email = request.form['email']
-    #     budget = request.form['budget']
-    #     new_user = User(name=user_name, last=user_last,
-    #                     email=user_email, budget=budget)
-    #     try:
-    #         db.session.add(new_user)
-    #         db.session.commit()
-    #         return redirect(url_for('users'))
-    #     except:
-    #         return 'There was an error adding your friend.'
 
     return render_template('register.html', form=form)
 
@@ -102,6 +89,17 @@ def update(id):
             return 'There was an error updating your record'
     else:
         return render_template('update.html', user_to_update=user_to_update)
+
+
+@app.route('/info/<string:symbol>', methods=['GET', 'POST'])
+@login_required
+def more_info(symbol):
+    token = 'Tsk_1c42cee11b834d83b84aec96ae542f1a'
+    api_url = f'https://sandbox.iexapis.com/stable/stock/{symbol}/chart/20200415?token={token}'
+    historical_data = requests.get(api_url).json()
+    labels = [item['date'] for item in historical_data]
+    data = [item['close'] for item in historical_data]
+    return render_template('info.html', labels=labels, data=data)
 
 
 @app.route('/delete/<int:id>', methods=['GET', 'POST'])

@@ -35,8 +35,10 @@ Stock Information
       <td>{{data.fifty_low}}</td>
       <td>{{data.pretty_iex}}</td>
       <td>
-        <a href="{{ url_for('coming_soon') }}">
-          <button class='btn btn-outline-info my-2 my-0'>More Info</button>
+        <a href="/info/{{data.symbol}}">
+          <input type="submit" name="info" value="More Info" class='btn btn-outline-info my-2 my-0'>
+        </a>
+        <a href=" {{ url_for('coming_soon') }}">
           <button class='btn btn-outline-success my-2 my-0'>Purchase</button>
         </a>
       </td>
