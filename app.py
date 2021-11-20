@@ -78,6 +78,7 @@ def register():
 def update(id):
     user_to_update = User.query.get_or_404(id)
     if request.method == 'POST':
+        user_to_update.username = request.form['username']
         user_to_update.name = request.form['name']
         user_to_update.last = request.form['last']
         user_to_update.email = request.form['email']
