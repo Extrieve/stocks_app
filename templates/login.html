@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% set active_page = "login_page" %}
+
 {% block title %}
 Login Page
 {% endblock %}
@@ -164,8 +166,69 @@ Login Page
     transition: all 0.8s;
     transition: all 0.8s
   }
+    .gradient-custom {
+    /* fallback for old browsers */
+    background: #212121;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: #212121;
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1)) */
+    background: #212121;
+  }
+
 </style>
-<div class="container">
+
+
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center" style="background: #191919; width: 600px; margin-left: auto; margin-right: auto; position: relative; right:75px;">
+            <form method="post">
+              {{ form.hidden_tag() }}
+              <div class="mb-md-5 mt-md-4 pb-5">
+
+                <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                <p class="text-white-50 mb-5">Please enter your login and password!</p>
+
+                <div class="form-outline form-white mb-4">
+                  {{form.username.label()}}
+                  {{form.username(class="form-control form-control-lg", type="username", placeholder="Username")}}
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                  {{form.password.label()}}
+                  {{form.password(class="form-control form-control-lg", type="password", placeholder="Password")}}
+                </div>
+
+                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
+
+                <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+
+                <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                  <a href="https://www.linkedin.com/in/NickCinera/" class="text-white"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                  <a href="https://twitter.com/geohotarchive" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+                  <a href="https://github.com/Extrieve" class="text-white"><i class="fab fa-github fa-lg"></i></a>
+                </div>
+              </div>
+              </form>
+
+
+            <div>
+              <p class="mb-0">Don't have an account? <a href="{{url_for('register')}}" class="text-white-50 fw-bold">Sign Up</a></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <div class="container">
   <div class="row">
     <div class="col-md-6">
       <div class="card">
@@ -180,7 +243,7 @@ Login Page
           {{form.password(class="input", type="text", placeholder="Password")}}
           <!-- <input type="text" name="" placeholder="Username">
           <input type="password" name="" placeholder="Password"> <a class="forgot text-muted" href="#">Forgot password?</a>  -->
-          {{form.submit(class="btn btn-primary")}}
+          <!-- {{form.submit(class="btn btn-primary")}}
           <div class="col-md-12">
             <ul class="social-network social-circle">
               <li><a href="#" class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
@@ -192,36 +255,8 @@ Login Page
       </div>
     </div>
   </div>
-</div>
-<!--
-<body class="text-center">
-  <div class="container">
-    <form class="form-signin" style="color:white" method="post">
-      {{ form.hidden_tag() }}
-      <div class="container">
-        <img class="mb-4" src="https://www.pngplay.com/wp-content/uploads/6/Welcome-Banner-Transparent-PNG.png" width="800">
-      </div>
-      <h1 class="h3 mb-3 font-weight-normal">
-        Log into your Account
-      </h1>
-      <br>
-      {{form.username.label()}}
-      {{form.username(class="form-control", placeholder="User Name")}}
+</div> -->
 
-      {{form.password.label()}}
-      {{form.password(class="form-control", placeholder="password")}}
-
-      <br>
-      <div class="checkbox mb-3">
-        <h5>Do not have an account?</h5>
-        <a href="{{ url_for('register') }}" class="btn btn-sm btn-primary">Register</a>
-      </div>
-
-      <br>
-      {{form.submit(class="btn btn-lg btn-block btn-primary")}}
-    </form>
-  </div>
-</body> -->
 
 
 {% endblock %}

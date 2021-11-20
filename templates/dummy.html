@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Dummy Page
+{% endblock %}
+
+{% block content %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+<style>
+.btn {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.btn-outline-primary {
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
+}
+
+.btn-outline-primary:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+
+<br>
+<button type="button" class="btn btn-outline-primary" data-mdb-ripple-color="dark">
+  Primary
+</button>
+<button type="button" class="btn btn-outline-secondary" data-mdb-ripple-color="dark">
+  Secondary
+</button>
+<button type="button" class="btn btn-outline-success" data-mdb-ripple-color="dark">
+  Success
+</button>
+<button type="button" class="btn btn-outline-danger" data-mdb-ripple-color="dark">
+  Danger
+</button>
+<button type="button" class="btn btn-outline-warning" data-mdb-ripple-color="dark">
+  Warning
+</button>
+<button type="button" class="btn btn-outline-info" data-mdb-ripple-color="dark">
+  Info
+</button>
+<button type="button" class="btn btn-outline-light" data-mdb-ripple-color="dark">
+  Light
+</button>
+<button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark">
+  Dark
+</button>
+{% endblock %}

@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% set active_page = "register" %}
+
 {% block title %}
 Register Page
 {% endblock %}
@@ -13,32 +15,23 @@ Register Page
     font-family: sans-serif;
     background: linear-gradient(to right, #b92b27, #1565c0)
   } */
-  #footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 3.5rem;        /* Footer height */
-  }
 
   .card {
     margin-bottom: 20px;
     border: none
-    top: 50%;
-    left: 50%;
-    position: fluid
   }
 
   .box {
     width: 600px;
     max-width: 100%;
     padding: 40px;
-    position: fluid;
+    position: absolute;
     top: 50%;
     left: 50%;
     background: #191919;
     text-align: center;
     transition: 0.25s;
-    margin-top: 50px
+    margin-top: 100px
   }
 
   .box input[type="text"],
@@ -113,7 +106,7 @@ Register Page
   }
 
   .social-network a.icoGoogle:hover {
-    background-color: #BD3518
+    background-color: #842fa2
   }
 
   .social-network a.icoFacebook:hover i,
@@ -155,44 +148,98 @@ Register Page
     transition: all 0.8s;
     transition: all 0.8s
   }
+    .gradient-custom {
+    /* fallback for old browsers */
+    background: #212121;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: #212121;
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1)) */
+    background: #212121;
+  }
+
 </style>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card" style="background-color: rgb(33,33,33);">
-        <form onsubmit="" class="box" method="post">
-          {{ form.hidden_tag() }}
-          <h1>Register</h1>
-          <p class="text-muted"> Register an Account!</p>
 
-          {{form.username.label()}}
-          {{form.username(class="input", type="text", placeholder="Username")}}
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center" style="background: #191919; width: 600px; margin-left: auto; margin-right: auto; position: relative; right:75px;">
+            <form method="post">
+              {{ form.hidden_tag() }}
+              <div class="mb-md-5 mt-md-4 pb-5">
 
-          {{form.password1.label()}}
-          {{form.password1(class="input", type="text", placeholder="password")}}
+                <h2 class="fw-bold mb-2 text-uppercase">Register Account</h2>
 
-          {{form.password2.label()}}
-          {{form.password2(class="input", type="text", placeholder="confirm")}}
+                <div class="form-outline form-white mb-4">
+                  {{form.username.label()}}
+                  {{form.username(class="form-control form-control-lg", type="username", placeholder="Username")}}
+                </div>
 
-          {{form.name.label()}}
-          {{form.name(class="input", type="text", placeholder="Name")}}
+                <div class="form-outline form-white mb-4">
+                  {{form.password1.label()}}
+                  {{form.password1(class="form-control form-control-lg", type="password", placeholder="Password")}}
+                </div>
 
-          {{form.last.label()}}
-          {{form.last(class="input", type="text", placeholder="Last Name")}}
+                <div class="form-outline form-white mb-4">
+                  {{form.password2.label()}}
+                  {{form.password2(class="form-control form-control-lg", type="password", placeholder="Confirm Password")}}
+                </div>
 
-          {{form.email.label()}}
-          {{form.email(class="input", type="text", placeholder="email")}}
+                <div class="form-outline form-white mb-4">
+                  {{form.name.label()}}
+                  {{form.name(class="form-control form-control-lg", type="name", placeholder="First Name")}}
+                </div>
 
-          {{form.budget.label()}}
-          {{form.budget(class="input", type="text", placeholder="Budget")}}
-          <br>
-          {{form.submit(class="btn btn-primary")}}
+                <div class="form-outline form-white mb-4">
+                  {{form.last.label()}}
+                  {{form.last(class="form-control form-control-lg", type="last", placeholder="Last Name")}}
+                </div>
 
-        </form>
+                <div class="form-outline form-white mb-4">
+                  {{form.email.label()}}
+                  {{form.email(class="form-control form-control-lg", type="email", placeholder="Email")}}
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                  {{form.budget.label()}}
+                  {{form.budget(class="form-control form-control-lg", type="budget", placeholder="Budget")}}
+                </div>
+
+                <br>
+                <button class="btn btn-outline-light btn-lg px-5" type="submit">Register</button>
+
+                <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                  <a href="https://www.linkedin.com/in/NickCinera/" class="text-white"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                  <a href="https://twitter.com/geohotarchive" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+                  <a href="https://github.com/Extrieve" class="text-white"><i class="fab fa-github fa-lg"></i></a>
+                </div>
+              </div>
+              </form>
+
+
+            <div>
+              <p class="mb-0">Already have an account? <a href="{{url_for('login_page')}}" class="text-white-50 fw-bold">Log In</a></p>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-
+</section>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 {% endblock %}

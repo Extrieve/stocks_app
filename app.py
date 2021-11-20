@@ -1,7 +1,7 @@
 from models import app, db, User, Stocks
 from flask import render_template, request, redirect, url_for, flash
 from forms import RegisterForm, StocksForm, LoginForm
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 import requests
 import random
 
@@ -142,6 +142,11 @@ def logout_page():
     logout_user()
     flash('Successfully logged out!', category='info')
     return redirect(url_for('index'))
+
+
+@app.route('/dummy')
+def dummy():
+    return render_template('dummy.html')
 
 
 if __name__ == '__main__':
