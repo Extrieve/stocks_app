@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from models import User
 from wtforms import StringField, SubmitField, FloatField, IntegerField, ValidationError, PasswordField
-from wtforms.validators import DataRequired, Email, Length, EqualTo
+from wtforms.validators import DataRequired, Email, Length, EqualTo, NumberRange
 
 
 class RegisterForm(FlaskForm):
@@ -26,7 +26,8 @@ class RegisterForm(FlaskForm):
     name = StringField(label='First Name', validators=[DataRequired()])
     last = StringField(label='Last Name', validators=[DataRequired()])
     email = StringField(label='Email', validators=[DataRequired(), Email()])
-    budget = IntegerField(label='Budget', validators=[DataRequired()])
+    budget = IntegerField(label='Budget', validators=[
+                          DataRequired(), NumberRange(min=10)])
     submit = SubmitField(label='Register Account')
 
 
@@ -50,3 +51,11 @@ class StocksForm(FlaskForm):
                               validators=[DataRequired()])
     primary_exchange = StringField(
         label='Trading Market', validators=[DataRequired()])
+
+
+class PurchaseItemForm(FlaskForm):
+    submit = SubmitField(label='Purchase Stocks!')
+
+
+class SellStocksForm(FlaskForm):
+    submit = SubmitField(label='Sell Stocks!')

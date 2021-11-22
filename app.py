@@ -1,6 +1,6 @@
 from models import app, db, User, Stocks
 from flask import render_template, request, redirect, url_for, flash
-from forms import RegisterForm, StocksForm, LoginForm
+from forms import RegisterForm, StocksForm, LoginForm,  PurchaseItemForm
 from flask_login import login_user, logout_user, login_required, current_user
 import requests
 import random
@@ -28,14 +28,7 @@ def users():
 @app.route('/stocks', methods=['GET', 'POST'])
 @login_required
 def stocks():
-    # r1 = random.randint(0, 495)
-    # token = 'Tsk_1c42cee11b834d83b84aec96ae542f1a'
-    # stock_data = []
-    # for ticker in data[r1: r1+10]:
-    #     api_url = f'https://sandbox.iexapis.com/stable/stock/{ticker}/quote/?token={token}'
-    #     ## Transform the data as a json object
-    #     stock = requests.get(api_url).json()
-    #     stock_data.append(stock)
+    purchase_form = PurchaseItemForm()
     q = request.args.get('q')
 
     if q:
@@ -44,7 +37,7 @@ def stocks():
     else:
         stock_data = Stocks.query.all()
 
-    return render_template('stocks.html', stock_data=stock_data)
+    return render_template('stocks.html', stock_data=stock_data, purchase_form=purchase_form)
 
 
 @app.route('/about-me', methods=['GET', 'POST'])

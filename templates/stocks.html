@@ -28,6 +28,7 @@ Stock Information
   <tbody>
     <!-- Your rows inside the table HERE: -->
     {%for data in stock_data%}
+    {% include 'includes/items_modals.html' %}
     <tr>
       <td>{{data.name}}</td>
       <td>{{data.symbol}}</td>
@@ -40,7 +41,7 @@ Stock Information
         <a href="/info/{{data.symbol}}">
           <input type="submit" name="info" value="More Info" class='btn btn-outline-info my-2 my-0'>
         </a>
-        <a href=" {{ url_for('coming_soon') }}">
+        <a data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ data.symbol }}">
           <button class='btn btn-outline-success my-2 my-0'>Purchase</button>
         </a>
       </td>
