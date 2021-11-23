@@ -82,3 +82,11 @@ class Portfolios(db.Model):
     symbol = db.Column(db.String(5))
     user_id = db.Column(db.Integer)
     price = db.Column(db.Float)
+
+
+class Friends(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(30), nullable=False)
+    name = db.Column(db.String, nullable=False)
+    last = db.Column(db.String(30), nullable=False)
+    email = db.Column(db.String(60), nullable=False)

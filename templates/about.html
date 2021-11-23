@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{{ 'active' if active_page == 'about_me' else '' }}
+{% set active_page = "about_me" %}
 
 {% block title %}
 About Me
@@ -55,6 +55,13 @@ About Me
       <br>
       <h3 class="test1">Data Model</h3>
       <img class="img-fluid" src="../static/img/data_model1.png" alt="Responsive image" style="border: 5px solid #555;">
+      <br>
+      <br>
+      <br>
+      <h3 class="test1">API Source</h3>
+      <a href="https://iexcloud.io/">
+        <img class="img-fluid" src="../static/img/iex_cloud.png" href="https://iexcloud.io/" alt="Responsive image" style="border: 5px solid #555;">
+      </a>
     </div>
   </div>
 <br>
