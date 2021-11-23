@@ -1,4 +1,4 @@
-from models import app, db, User, Stocks
+from models import app, db, User, Stocks, Portfolios
 from flask import render_template, request, redirect, url_for, flash
 from forms import RegisterForm, StocksForm, LoginForm,  PurchaseItemForm
 from flask_login import login_user, logout_user, login_required, current_user
@@ -37,7 +37,31 @@ def stocks():
     else:
         stock_data = Stocks.query.all()
 
+    if request.method == 'POST':
+        purchased_item = request.form.get('purchased_item')
+        p_stock_object = Stocks.query.filter_by(name=purchased_item).first()
+        if p_stock_object:
+            if current_user.budget > p_stock_object.latest_price:
+                new_entry = Portfolios(
+                    name=p_stock_object.name, symbol=p_stock_object.symbol, user_id=current_user.id, price=p_stock_object.latest_price)
+                current_user.budget -= p_stock_object.latest_price
+                db.session.add(new_entry)
+                db.session.commit()
+                flash(
+                    f"Congratulations! You purchased {p_stock_object.name} for {p_stock_object.latest_price}$", category='success')
+                return redirect(url_for('portfolios', id=current_user.id))
+            else:
+                flash(
+                    f"Unfortunately, you don't have enough money to purchase {p_stock_object.name}!", category='danger')
+
     return render_template('stocks.html', stock_data=stock_data, purchase_form=purchase_form)
+
+
+@app.route('/portfolio/<int:id>', methods=['GET', 'POST'])
+@login_required
+def portfolios(id):
+    my_stocks = Portfolios.query.filter_by(user_id=id)
+    return render_template('portfolios.html', stocks=my_stocks)
 
 
 @app.route('/about-me', methods=['GET', 'POST'])

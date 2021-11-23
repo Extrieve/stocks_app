@@ -74,3 +74,11 @@ class Stocks(db.Model):
                 return f"{self.iex_volume}"
         else:
             return f"None"
+
+
+class Portfolios(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    symbol = db.Column(db.String(5))
+    user_id = db.Column(db.Integer)
+    price = db.Column(db.Float)

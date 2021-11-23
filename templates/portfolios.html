@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% set active_page = "portfolios" %}
+
+{% block title %}
+Portfolio
+{% endblock %}
+
+{% block content %}
+<form class="form-register" style="color:white" method="GET">
+  <input class="form-control mr-sm-2" type="search" placeholder="Search" name="q">
+  <button class="btn btn-outline-success my-2 my-0" type="submit" name="search">Search</button>
+  <button class="btn btn-outline-danger my-2 my-0" type="submit" name="reset" href="{{url_for('stocks')}}">Reset</button>
+</form>
+<table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <!-- Your Columns HERE -->
+      <th scope="col">Company Name</th>
+      <th scope="col">Symbol</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Your rows inside the table HERE: -->
+    {%for data in stocks%}
+    <tr>
+      <td>{{data.name}}</td>
+      <td>{{data.symbol}}</td>
+      <td>{{data.price}}</td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+{% endblock %}

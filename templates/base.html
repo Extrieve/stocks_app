@@ -85,6 +85,9 @@
             </li>
           </ul>
           <ul class="navbar-nav">
+            <li class="nav-item {{ 'active' if active_page == 'portfolios' else '' }}">
+              <a class="nav-link" href="/portfolio/{{current_user.id}}">Portfolio</a>
+            </li>
             <li class="nav-item {{ 'active' if active_page == 'about_me' else '' }}">
               <a class="nav-link" href="{{ url_for('about_me') }}">About Me</a>
             </li>
