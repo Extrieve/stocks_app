@@ -7,13 +7,30 @@
 {% endblock %}
 
 {% block content %}
+<style media="screen">
+  h2.test1 {
+    font-family: Georgia, sans-serif;
+    font-size: 5em;
+    letter-spacing: -2px;
+  }
+  h3.test1 {
+    font-family: Georgia, sans-serif;
+    font-size: 3em;
+    letter-spacing: -2px;
+  }
+  p.test1{
+    font-family: Georgia, sans-serif;
+  }
+</style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <a href="{{ url_for('stocks') }}">
-  <button class="btn btn-outline-success my-2 my-0" style="margin:40px;" type="submit" name="reset" href="{{url_for('stocks')}}">Go Back</button>
+  <button class="btn btn-outline-info my-2 my-0" style="margin:40px;" type="submit" name="reset" href="{{url_for('stocks')}}">All Stocks</button>
 </a>
+<h3 class="test1" style="text-align:center">{{name}}</h3>
 <canvas id="lineChart" width="900" height="400">
   <script>
     var ctx = document.getElementById("lineChart").getContext("2d")
+    let mycolor;
     var lineChart = new Chart(ctx, {
       type: "line",
       data: {
@@ -21,8 +38,9 @@
         datasets: [{
           label: "Closing Price",
           data: {{ data | safe }},
-          fill: false,
-          borderColor: "rgb(75, 192, 192)",
+          fill: true,
+          fillColor : "rgba(151,187,205,0)",
+          borderColor: {{ color | tojson }},
           lineTension: 0.1
         }]
       },

@@ -12,7 +12,6 @@ def index():
 
 
 @app.route('/users', methods=['GET', 'POST'])
-@login_required
 def users():
     q = request.args.get('q')
 
@@ -26,7 +25,6 @@ def users():
 
 
 @app.route('/stocks', methods=['GET', 'POST'])
-@login_required
 def stocks():
     purchase_form = PurchaseItemForm()
     q = request.args.get('q')
@@ -65,7 +63,6 @@ def portfolios(id):
 
 
 @app.route('/about-me', methods=['GET', 'POST'])
-@login_required
 def about_me():
     return render_template('about.html')
 
@@ -110,14 +107,16 @@ def update(id):
 
 
 @app.route('/info/<string:symbol>', methods=['GET', 'POST'])
-@login_required
 def more_info(symbol):
     token = 'Tsk_1c42cee11b834d83b84aec96ae542f1a'
     api_url = f'https://sandbox.iexapis.com/stable/stock/{symbol}/chart/20200415?token={token}'
     historical_data = requests.get(api_url).json()
     labels = [item['date'] for item in historical_data]
     data = [item['close'] for item in historical_data]
-    return render_template('info.html', labels=labels, data=data, symbol=symbol)
+    stock = Stocks.query.get(symbol)
+    color = "#872027" if data[0] > data[-1] else '#11992c'
+    # color = "green" if data[0] < data[-1] else 'red'
+    return render_template('info.html', labels=labels, data=data, symbol=symbol, name=stock.name, color=color)
 
 
 @app.route('/delete/<int:id>', methods=['GET', 'POST'])
