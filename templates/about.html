@@ -22,13 +22,24 @@ About Me
       letter-spacing: -2px;
     }
 
+    h4.test1 {
+      font-family: Georgia, sans-serif;
+      font-size: 2em;
+      letter-spacing: -2px;
+    }
+
     p.test1 {
       font-family: Georgia, sans-serif;
       font-size: 0.7em;
     }
+
+    hr.solid {
+      border-top: 3px solid #bbb;
+    }
   </style>
-  <div class="container" style="text-align:center; margin-right: 320px">
-    <div class="col-10">
+
+  <div class="container" style="text-align:center;">
+    <div class="col-11">
       <br>
       <h1 class="test1">About Me</h1>
       <br>
@@ -38,37 +49,93 @@ About Me
       <h2>
         <p style="text-align:left;" class="lead test1">
           <strong>
-            Hello my name is <mark>Nicolas Cinera</mark> and I am the author of this site.
+            Hello, my name is <mark>Nicolas Cinera</mark> and I am the author of this site.
             My friends usually call me Nick, and I am in my first semester in the BAIS Masters program at USF.<br><br>
-            The following project was accomplished using various frameworks, the main framework for this project is Flask. Similar to MVC Flask uses a Model, View
-            , Controller structure to facilitate aspects of full-stack website building. In this case I create objects which represent an entity in my DB, which
-            then are used by the Object Relational Mapper to perform querying capabilities, and then are later used by the Flask controller to render the views/templates
-            to the browser. Aside from flask, I used Content Delivery Networks (CDNs) for external styling, and also for Scripting capabilities such as JQuery and also
-            ChartJs. Most of the website elements were built from scratch aside from some html snippets such as the nav-bar element.
+            The following project was accomplished using various frameworks, the main framework for this project is Flask. Similar to MVC Flask uses a Model, View, Controller structure to facilitate aspects of full-stack website building.
+            In this case, I create objects which represent an entity in my DB, which then are used by the Object Relational Mapper to perform querying capabilities, and then are later used by the Flask controller to render the views/templates to the browser. Aside from flask, I used Content Delivery Networks (CDNs) for external styling, and also for Scripting capabilities such as JQuery and also ChartJs. Most of the website elements were built from scratch aside from some HTML snippets such as the nav-bar element.
             <br>
             <br>
-            I am in my early 20's, so I don't have much professional experience but I am eager to proof myself in Software Engineer / Data Science related roles.
-            In my free time I like learning about new frameworks, in the last few years I have been very passionate about Python.
-            Some of my favorite libraries include pandas, opencv, flask, pygame, and the ever trusty requests!
-            I am a proud member of the Society of Competitve Programmers here at USF!
-            <br><br>Other of my non-code related hobbies include powerlifting, reading, anime and movies.
-            I am trying to go for a 405lbs squat before the semester ends (370 current).
+            I am in my early 20's, so I don't have much professional experience but I am eager to prove myself in Software Engineer / Data Science related roles. In my free time, I like learning about new frameworks,
+            in the last few years I have been very passionate about Python. Some of my favorite libraries include pandas, OpenCV, flask, pygame, and the ever-trusty requests! I am a proud member of the Society of Competitive Programmers here at USF!
+            <br><br>
+            Other of my non-code-related hobbies include powerlifting, reading, anime, and movies. I am trying to go for a 405lbs squat before the semester ends (370 current).
+            I believe my best compound is my strict-press, which I can currently do for a one rep max of 185lbs!
+
+            <br>
+            <br>
+            Some of the people that have greatly influenced my life include: <mark>George Hotz</mark>, Christopher Hitchens, Michael Malice, Lex Fridman, Cédric Villani, Elon Musk and Joe Rogan.
+             I am eternally greatfull for all the knowledge and wise advice I've gathered from all these folk. I would not be the person I am today if it were not for their voices and personalities.
+             <br>
           </strong>
         </p>
-      </h2>
+        <br>
+        <figure>
+          <img class="img-fluid" src="../static/img/geo_hot.png" width="350px" alt="Responsive image" style="border: 5px solid #555;">
+          <figcaption>George Hotz</figcaption>
+        </figure>
+        </h2>
+        <br>
+        <hr class="solid">
+
+        <!-- <br>
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" style="height:600px;">
+        <div class="carousel-item active">
+          <img src="../static/img/git_log.png" class="d-block w-100" alt="..." style="height:600px; object-fit: co ntain;">
+          <div class="carousel-caption d-none d-md-block">
+            <strong><h3 class="test1" style="color: #e0a926"><mark>Git Log</mark></h3></strong>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="../static/img/data_model1.png" class="d-block w-100" alt="..." style="height:600px; object-fit: contain;">
+          <div class="carousel-caption d-none d-md-block">
+            <strong><h3 class="test1" style="color: #e0a926"><mark>Data Model</mark></h3></strong>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <a href="https://iexcloud.io/">
+          <img src="../static/img/iex_cloud.png" class="d-block w-100" alt="..." style="height:600px; object-fit: contain;">
+          </a>
+          <div class="carousel-caption d-none d-md-block">
+            <strong><h3 class="test1" style="color: #e0a926"><mark>IEX Cloud API</mark></h3></strong>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div> -->
+
       <br>
       <br>
-      <h3 class="test1">Git Log</h3>
+      <h3 class="test1"><mark>Git Log</mark></h3>
+      <br>
       <img class="img-fluid" src="../static/img/git_log.png" alt="Responsive image" style="border: 5px solid #555;">
       <br>
       <br>
       <br>
-      <h3 class="test1">Data Model</h3>
+      <hr class="solid">
+      <br>
+      <h3 class="test1"><mark>Data Model</mark></h3>
+      <br>
       <img class="img-fluid" src="../static/img/data_model1.png" alt="Responsive image" style="border: 5px solid #555;">
       <br>
       <br>
       <br>
-      <h3 class="test1">API Source</h3>
+      <hr class="solid">
+      <br>
+      <h3 class="test1"><mark>IEX Cloud API</mark></h3>
+      <br>
       <a href="https://iexcloud.io/">
         <img class="img-fluid" src="../static/img/iex_cloud.png" href="https://iexcloud.io/" alt="Responsive image" style="border: 5px solid #555;">
       </a>

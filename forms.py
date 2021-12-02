@@ -59,3 +59,7 @@ class PurchaseItemForm(FlaskForm):
 
 class SellStocksForm(FlaskForm):
     submit = SubmitField(label='Sell Stocks!')
+
+
+class FriendRequestForm(FlaskForm):
+    submit = SubmitField(label='Friend Request!')

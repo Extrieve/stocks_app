@@ -1,6 +1,6 @@
 from models import app, db, User, Stocks, Portfolios
 from flask import render_template, request, redirect, url_for, flash
-from forms import RegisterForm, StocksForm, LoginForm,  PurchaseItemForm
+from forms import RegisterForm, StocksForm, LoginForm,  PurchaseItemForm, FriendRequestForm
 from flask_login import login_user, logout_user, login_required, current_user
 import requests
 import random
@@ -13,6 +13,7 @@ def index():
 
 @app.route('/users', methods=['GET', 'POST'])
 def users():
+    user_form = FriendRequestForm()
     q = request.args.get('q')
 
     if q:
@@ -21,7 +22,12 @@ def users():
     else:
         user_data = User.query.all()
 
-    return render_template('users.html', mydata=user_data)
+    if request.method == 'POST':
+        add_user = request.form.get('add_user')
+        flash(
+            f"Congratulations you've added {add_user}!", category='success')
+
+    return render_template('users.html', mydata=user_data, user_form=user_form)
 
 
 @app.route('/stocks', methods=['GET', 'POST'])
