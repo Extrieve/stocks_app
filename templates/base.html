@@ -19,7 +19,7 @@
     {% block title %}
     {% endblock %}
   </title>
-  <link rel="shortcut icon" type="image/jpg" src="../static/img/python.png" href="../static/img/python.png"/>
+  <link rel="shortcut icon" type="image/jpg" src="../static/img/logo_noname.png" href="../static/img/logo_noname.png"/>
 </head>
 
 <body>
@@ -90,7 +90,7 @@ body::-webkit-scrollbar-thumb {
     <div id="content-wrap">
       <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
         <a class="navbar-brand" href="{{url_for('index')}}">Extrieve Stocks
-          <img class="img-fluid" src="../static/img/python.png" width="23px" alt="Responsive image">
+          <img class="img-fluid" src="../static/img/logo_noname.png" width="30px" alt="Responsive image">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
           <span class="navbar-toggler-icon"></span>
@@ -108,6 +108,9 @@ body::-webkit-scrollbar-thumb {
             </li>
             <li class="nav-item {{ 'active' if active_page == 'about_me' else '' }}">
               <a class="nav-link" href="{{ url_for('about_me') }}">About Me</a>
+            </li>
+            <li class="nav-item {{ 'active' if active_page == 'demo' else '' }}">
+              <a class="nav-link" href="{{ url_for('demo') }}">Demo</a>
             </li>
           </ul>
           {% if current_user.is_authenticated %}

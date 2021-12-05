@@ -114,13 +114,16 @@ def update(id):
 
 @app.route('/info/<string:symbol>', methods=['GET', 'POST'])
 def more_info(symbol):
+    s = requests.Session()
+    s.verify = False
     token = 'Tsk_1c42cee11b834d83b84aec96ae542f1a'
     api_url = f'https://sandbox.iexapis.com/stable/stock/{symbol}/chart/20200415?token={token}'
-    historical_data = requests.get(api_url).json()
+    historical_request = s.get(api_url)
+    historical_data = historical_request.json()
     labels = [item['date'] for item in historical_data]
     data = [item['close'] for item in historical_data]
     stock = Stocks.query.get(symbol)
-    color = "#872027" if data[0] > data[-1] else '#11992c'
+    color = '#872027' if data[0] > data[-1] else '#11992c'
     # color = "green" if data[0] < data[-1] else 'red'
     return render_template('info.html', labels=labels, data=data, symbol=symbol, name=stock.name, color=color)
 
@@ -169,6 +172,11 @@ def logout_page():
 @app.route('/dummy')
 def dummy():
     return render_template('dummy.html')
+
+
+@app.route('/demo')
+def demo():
+    return render_template('demo.html')
 
 
 if __name__ == '__main__':
